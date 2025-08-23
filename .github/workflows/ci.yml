@@ -19,26 +19,17 @@ jobs:
       - name: Build solution
         run: dotnet build SoftUniBazar.sln --configuration Release --no-restore
 
-  test-unit:
+  test:
     runs-on: windows-latest
     needs: build
-    if: github.ref == 'refs/heads/develop'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
       - name: Run Unit Tests
+        if: github.ref == 'refs/heads/develop'
         run: dotnet test --filter Category=Unit
-
-  test-integration:
-    runs-on: windows-latest
-    needs: build
-    if: github.ref == 'refs/heads/staging'
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
       - name: Run Integration Tests
+        if: github.ref == 'refs/heads/staging'
         run: dotnet test --filter Category=Integration

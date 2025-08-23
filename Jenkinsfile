@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         DOTNET_HOME = "/usr/local/share/dotnet"
-        TEST_RESULTS = "SoftUniBazar.Tests/TestResults"
+        TEST_RESULTS_UNIT = "SoftUniBazar.Tests/TestResults"
+        TEST_RESULTS_INTEGRATION = "SoftUniBazar.IntegrationTests/TestResults"
     }
 
     stages {
@@ -27,16 +28,20 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mkdir -p ${TEST_RESULTS}"
-                
-                sh "${DOTNET_HOME}/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --logger 'trx;LogFileName=${TEST_RESULTS}/test-results.trx'"
+                sh "mkdir -p ${TEST_RESULTS_UNIT}"
+                sh "mkdir -p ${TEST_RESULTS_INTEGRATION}"
 
+                sh "${DOTNET_HOME}/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --logger 'trx;LogFileName=${TEST_RESULTS_UNIT}/unit-tests.trx'"
+
+                sh "${DOTNET_HOME}/dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --no-build --logger 'trx;LogFileName=${TEST_RESULTS_INTEGRATION}/integration-tests.trx'"
             }
         }
 
         stage('Publish Test Results') {
             steps {
-                junit "${TEST_RESULTS}/*.trx"
+
+                junit "${TEST_RESULTS_UNIT}/*.trx"
+                junit "${TEST_RESULTS_INTEGRATION}/*.trx"
             }
         }
     }

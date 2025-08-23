@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Restore') {
+            steps {
+                bat 'dotnet restore SoftUniBazar.sln'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'dotnet build SoftUniBazar.sln --configuration Release'
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --configuration Release'
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                bat 'dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --configuration Release'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo '🧹 Pipeline finished.'
+        }
+        success {
+            echo '✅ All stages completed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check the logs above.'
+        }
+    }
+}

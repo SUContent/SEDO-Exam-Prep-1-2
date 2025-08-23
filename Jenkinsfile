@@ -27,15 +27,16 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh """
-                    mkdir -p TestResults
-                    ${DOTNET_PATH}/dotnet test SoftUniBazar/SoftUniBazar.csproj \\
-                        --no-build \\
-                        --verbosity normal \\
-                        --logger "junit;LogFileName=TestResults/test-results.xml"
-                """
-            }
-        }
+                sh '''
+            mkdir -p SoftUniBazar.Tests/TestResults
+            /usr/local/share/dotnet/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj \
+                --no-build \
+                --verbosity normal \
+                --logger "trx;LogFileName=TestResults/test-results.trx"
+        '''
+    }
+}
+
     }
 
     post {

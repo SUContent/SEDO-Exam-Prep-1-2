@@ -13,7 +13,7 @@ RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod
     dpkg -i packages-microsoft-prod.deb && \
     rm packages-microsoft-prod.deb && \
     apt-get update && \
-    apt-get install -y dotnet-sdk-7.0 && \
+    apt-get install -y dotnet-sdk-6.0 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean docker-workflow json-path-api cloudbees-folder"

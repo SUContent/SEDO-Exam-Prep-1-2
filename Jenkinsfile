@@ -7,20 +7,29 @@ pipeline {
                 bat 'dotnet restore SoftUniBazar.sln'
             }
         }
+
         stage('Build') {
             steps {
                 bat 'dotnet build SoftUniBazar.sln --configuration Release'
             }
         }
-        stage('Unit Tests') {
+
+        stage('Test') {
             steps {
-                bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --filter "Category=Unit"'
+                bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --configuration Release'
             }
         }
-        stage('Integration Tests') {
-            steps {
-                bat 'dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --filter "Category=Integration"'
-            }
+    }
+
+    post {
+        always {
+            echo '🧹 Pipeline finished.'
+        }
+        success {
+            echo '✅ All stages completed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check the logs above.'
         }
     }
 }

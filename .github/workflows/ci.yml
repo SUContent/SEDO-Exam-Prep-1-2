@@ -35,4 +35,4 @@ jobs:
           elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
             echo "Running Integration Tests"
             dotnet test SoftUniBazar.IntegrationTests --configuration Release --no-build
-          fi
+          fi 

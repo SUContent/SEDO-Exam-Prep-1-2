@@ -28,8 +28,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh "mkdir -p ${TEST_RESULTS_UNIT}"
-                sh "mkdir -p ${TEST_RESULTS_INTEGRATION}"
+                sh "mkdir -p ${TEST_RESULTS_UNIT} ${TEST_RESULTS_INTEGRATION}"
 
                 sh "${DOTNET_HOME}/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --logger 'trx;LogFileName=${TEST_RESULTS_UNIT}/unit-tests.trx'"
 
@@ -39,7 +38,6 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-
                 junit "${TEST_RESULTS_UNIT}/*.trx"
                 junit "${TEST_RESULTS_INTEGRATION}/*.trx"
             }

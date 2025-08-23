@@ -1,0 +1,15 @@
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\bin\Release\net6.0\SoftUniBazar.Data.deps.json
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\bin\Release\net6.0\SoftUniBazar.Data.runtimeconfig.json
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\bin\Release\net6.0\SoftUniBazar.Data.dll
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\bin\Release\net6.0\SoftUniBazar.Data.pdb
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.csproj.AssemblyReference.cache
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.AssemblyInfoInputs.cache
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.AssemblyInfo.cs
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.csproj.CoreCompileInputs.cache
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.sourcelink.json
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.dll
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\refint\SoftUniBazar.Data.dll
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.pdb
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\SoftUniBazar.Data.genruntimeconfig.cache
+E:\mlc level7 shalgalt\shalgalt_2\SoftUniBazar.Data\obj\Release\net6.0\ref\SoftUniBazar.Data.dll

@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOTNET_PATH = "/usr/local/share/dotnet"
-        PATH = "/usr/local/share/dotnet:$PATH"
+        DOTNET_HOME = "/usr/local/share/dotnet"
+        TEST_RESULTS = "SoftUniBazar.Tests/TestResults"
     }
 
     stages {
@@ -15,34 +15,35 @@ pipeline {
 
         stage('Restore') {
             steps {
-                sh "${DOTNET_PATH}/dotnet restore SoftUniBazar/SoftUniBazar.csproj"
+                sh "${DOTNET_HOME}/dotnet restore SoftUniBazar.sln"
             }
         }
 
         stage('Build') {
             steps {
-                sh "${DOTNET_PATH}/dotnet build SoftUniBazar/SoftUniBazar.csproj --configuration Release --no-restore"
+                sh "${DOTNET_HOME}/dotnet build SoftUniBazar.sln --configuration Release --no-restore"
             }
         }
 
         stage('Test') {
             steps {
-                sh '''
-            mkdir -p SoftUniBazar.Tests/TestResults
-            /usr/local/share/dotnet/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj \
-                --no-build \
-                --verbosity normal \
-                --logger "trx;LogFileName=TestResults/test-results.trx"
-        '''
-    }
-}
+                sh "mkdir -p ${TEST_RESULTS}"
+                
+                sh "${DOTNET_HOME}/dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --logger 'trx;LogFileName=${TEST_RESULTS}/test-results.trx'"
 
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit "${TEST_RESULTS}/*.trx"
+            }
+        }
     }
 
     post {
         always {
-            // Publish test results in Jenkins
-            junit 'TestResults/test-results.xml'
+            cleanWs()
         }
     }
 }

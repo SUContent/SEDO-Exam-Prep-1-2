@@ -39,8 +39,10 @@ pipeline {
 
     post {
         always {
-            // Use the MSTest plugin to read .trx files
-            mstest testResultsFile: 'TestResults/*.trx'
+            // Convert TRX to JUnit format and publish results
+            // You can use dotnet tool "trx2junit" or similar, or just use the JUnit plugin if you generate JUnit XML directly
+            // Example assuming conversion is done and XML is in TestResults/test-results.xml:
+            junit 'TestResults/*.xml'
         }
     }
 }

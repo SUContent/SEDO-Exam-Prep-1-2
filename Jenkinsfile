@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Restore'){
+            steps{
+                bat 'dotnet restore SoftUniBazar.sln'
+            }
+        }
+        stage('Build'){
+            steps {
+                bat 'dotnet build SoftUniBazar.sln --configuration Release'
+            }
+        }
+        stage ('Test') {
+            steps{
+                bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj'
+            }
+        }
+    }
+}

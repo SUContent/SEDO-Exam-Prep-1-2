@@ -23,14 +23,19 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '/usr/local/share/dotnet/dotnet test SoftUniBazar/SoftUniBazar.csproj --no-build --verbosity normal --logger "trx;LogFileName=TestResults.xml"'
+                sh '''
+                    /usr/local/share/dotnet/dotnet test SoftUniBazar/SoftUniBazar.csproj \
+                    --no-build \
+                    --verbosity normal \
+                    --logger "trx;LogFileName=TestResults/test-results.xml"
+                '''
             }
         }
     }
 
     post {
         always {
-            junit '**/TestResults.xml'
+            junit 'TestResults/test-results.xml'
         }
     }
 }

@@ -127,7 +127,6 @@ namespace SoftUniBazar.Tests
             Assert.AreEqual("Edited Description", updatedAd.Description);
             Assert.AreEqual(150, updatedAd.Price);
             Assert.AreEqual("https://example.com/edited.jpg", updatedAd.ImageUrl);
-            Assert.AreNotEqual("https://example.com/edited.jpg", updatedAd.ImageUrl); //TEST!! can be deleted
         }
     }
 }

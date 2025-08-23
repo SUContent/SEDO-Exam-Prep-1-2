@@ -31,7 +31,7 @@ pipeline {
                     /usr/local/share/dotnet/dotnet test SoftUniBazar/SoftUniBazar.csproj \
                         --no-build \
                         --verbosity normal \
-                        --logger "junit;LogFileName=TestResults/test-results.xml"
+                        --logger "trx;LogFileName=TestResults/test-results.trx"
                 '''
             }
         }
@@ -39,7 +39,8 @@ pipeline {
 
     post {
         always {
-            junit 'TestResults/test-results.xml'
+            // Use the MSTest plugin to read .trx files
+            mstest testResultsFile: 'TestResults/*.trx'
         }
     }
 }

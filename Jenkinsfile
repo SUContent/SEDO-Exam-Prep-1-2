@@ -14,9 +14,14 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Unit Tests') {
             steps {
                 bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --configuration Release'
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                bat 'dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --configuration Release'
             }
         }
     }

@@ -10,12 +10,17 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
+
       - name: Restore dependencies
         run: dotnet restore SoftUniBazar.sln
+
       - name: Build solution
         run: dotnet build SoftUniBazar.sln --configuration Release --no-restore
 
@@ -23,13 +28,18 @@ jobs:
     runs-on: windows-latest
     needs: build
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
+
       - name: Run Unit Tests
         if: github.ref == 'refs/heads/develop'
         run: dotnet test --filter Category=Unit
+
       - name: Run Integration Tests
         if: github.ref == 'refs/heads/staging'
         run: dotnet test --filter Category=Integration

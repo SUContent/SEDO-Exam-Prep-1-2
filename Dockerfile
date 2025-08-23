@@ -12,12 +12,12 @@ RUN apt-get update && apt-get install -y lsb-release ca-certificates curl wget a
     | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     apt-get update && apt-get install -y docker-ce-cli
 
-# Install .NET SDK 7.0
+# Install .NET SDK 6.0
 RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
     dpkg -i packages-microsoft-prod.deb && \
     rm packages-microsoft-prod.deb && \
     apt-get update && \
-    apt-get install -y dotnet-sdk-7.0
+    apt-get install -y dotnet-sdk-6.0
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

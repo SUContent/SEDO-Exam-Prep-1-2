@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using SoftUniBazar.Controllers;
@@ -71,7 +71,9 @@ namespace SoftUniBazar.Tests
             var model = viewResult.Model as AdFormModel;
             Assert.IsNotNull(model); // Ensure the model is of type AdFormModel
             Assert.NotNull(model.Categories); // Ensure categories are not null
+#pragma warning disable NUnit2005 // Consider using Assert.That(actual, Is.EqualTo(expected)) instead of Assert.AreEqual(expected, actual)
             Assert.AreEqual(2, model.Categories.Count()); // Check if two categories exist
+#pragma warning restore NUnit2005 // Consider using Assert.That(actual, Is.EqualTo(expected)) instead of Assert.AreEqual(expected, actual)
         }
 
         [Test]

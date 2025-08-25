@@ -1,45 +1,46 @@
-name: CI Pipeline
+name: .NET CI Pipeline
 
 on:
   push:
     branches:
       - develop
       - staging
+      - feature-ci-pipeline
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release
 
-      - name: Restore dependencies
-        run: dotnet restore SoftUniBazar.sln
-
-      - name: Build solution
-        run: dotnet build SoftUniBazar.sln --configuration Release --no-restore
-
-  test:
-    runs-on: windows-latest
-    needs: build
+  unit_tests:
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/feature-ci-pipeline'
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-
-      - name: Run Unit Tests
-        if: github.ref == 'refs/heads/develop'
+      - name: Unit Tests
         run: dotnet test --filter Category=Unit
 
-      - name: Run Integration Tests
-        if: github.ref == 'refs/heads/staging'
+  integration_tests:
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Integration Tests
         run: dotnet test --filter Category=Integration

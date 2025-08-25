@@ -9,38 +9,54 @@ on:
 
 jobs:
   build:
+    name: Build .NET 8
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Restore
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release
+
+      - name: Restore & Build
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
 
   unit_tests:
+    name: Unit Tests (.NET 6)
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/feature-ci-pipeline'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 6
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-      - name: Unit Tests
-        run: dotnet test --filter Category=Unit
+          dotnet-version: '6.0.x'
+
+      - name: Restore & Test
+        run: |
+          dotnet restore
+          dotnet test --filter Category=Unit --no-build --verbosity normal
 
   integration_tests:
+    name: Integration Tests (.NET 6)
     if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 6
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-      - name: Integration Tests
-        run: dotnet test --filter Category=Integration
+          dotnet-version: '6.0.x'
+
+      - name: Restore & Test
+        run: |
+          dotnet restore
+          dotnet test --filter Category=Integration --no-build --verbosity normal

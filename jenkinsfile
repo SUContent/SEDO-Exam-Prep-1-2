@@ -1,0 +1,25 @@
+pipeline {
+  agent { label 'windows' }
+    stage('Build') {
+        when {
+            anyOf {
+                branch 'main'
+                branch 'feature'
+            }
+        }
+        steps {
+            bat 'dotnet build'
+        }
+    }
+    stage('test') {
+        when {
+            anyOf {
+                branch 'main'
+                branch 'feature'
+            }
+        }
+        steps {
+            bat 'dotnet test'
+        }
+    }
+}

@@ -9,12 +9,12 @@ namespace SoftUniBazar.Models.Ad
     {
         [Required]
         [StringLength(AdNameMax, MinimumLength = AdNameMin,
-            ErrorMessage = "Ad name must be between 5 and 25 characters.")]
+            ErrorMessage = "Ad name must be between 5 and 25 characters!!!!.")]
         public string Name { get; set; } = null!;
 
         [Required]
         [StringLength(AdDescriptionMax, MinimumLength = AdDescriptionMin,
-            ErrorMessage = "Description must be between 15 and 250 characters.")]
+            ErrorMessage = "Description must be between 15 and 250 characters...")]
         public string Description { get; set; } = null!;
 
         [Required]

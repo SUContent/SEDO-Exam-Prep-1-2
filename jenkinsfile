@@ -1,25 +1,41 @@
 pipeline {
-  agent { label 'windows' }
-    stage('Build') {
-        when {
-            anyOf {
-                branch 'main'
-                branch 'feature'
+    agent any
+
+    stages {
+        stage('Restore the dependencies') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet restore'
             }
         }
-        steps {
-            bat 'dotnet build'
-        }
-    }
-    stage('test') {
-        when {
-            anyOf {
-                branch 'main'
-                branch 'feature'
+
+        stage('Build the application') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet build --no-restore'
             }
         }
-        steps {
-            bat 'dotnet test'
+
+        stage('test') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet test --no-build --verbosity normal'
+            }
         }
     }
 }

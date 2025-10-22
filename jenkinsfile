@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Restore the dependencies') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet restore'
+            }
+        }
+
+        stage('Build the application') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet build --no-restore'
+            }
+        }
+
+        stage('test') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps {
+                bat 'dotnet test --no-build --verbosity normal'
+            }
+        }
+    }
+}

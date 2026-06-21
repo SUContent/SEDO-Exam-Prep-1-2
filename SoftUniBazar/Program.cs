@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SoftUniBazar.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+// comment
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<BazarDbContext>(options =>

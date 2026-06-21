@@ -1,0 +1,15 @@
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/bin/Debug/net8.0/SoftUniBazar.Data.deps.json
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/bin/Debug/net8.0/SoftUniBazar.Data.runtimeconfig.json
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/bin/Debug/net8.0/SoftUniBazar.Data.dll
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/bin/Debug/net8.0/SoftUniBazar.Data.pdb
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.csproj.AssemblyReference.cache
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.GeneratedMSBuildEditorConfig.editorconfig
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.AssemblyInfoInputs.cache
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.AssemblyInfo.cs
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.csproj.CoreCompileInputs.cache
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.sourcelink.json
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.dll
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/refint/SoftUniBazar.Data.dll
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.pdb
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/SoftUniBazar.Data.genruntimeconfig.cache
+/home/danailov/Downloads/13-Exam-Prep-I-Resources/exam-prep-dotnet/SoftUniBazar.Data/obj/Debug/net8.0/ref/SoftUniBazar.Data.dll
